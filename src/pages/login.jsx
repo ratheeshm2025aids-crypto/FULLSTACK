@@ -38,19 +38,29 @@ function login() {
 
 export default Login */
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
 
 function Login() {
-  const [count, setCount] = useState(0)
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  //const [count, setCount] = useState(0)
+  //const [email, setEmail] = useState("")
+  //const [password, setPassword] = useState("")
 
-  function print(e) {
+  const[formdata,setFormdata]=useState({
+    username:"",
+    password:""
+  })
+
+  function print(e) { 
     e.preventDefault()
-    console.log("Email: ", email)
-    console.log("Password: ", password)
+    //console.log("Email: ", email)
+    //console.log("Password: ", password)
+    console.log(formdata)
   }
-
-  return (
+  function handlechange(e){
+   setFormdata( {...formdata,
+[e.target.name]: e.target.value})  
+}
+ return (
     <>
       <h1 className="text-3xl font-bold text-blue-500">
         Hi!
@@ -60,15 +70,13 @@ function Login() {
 
       <div>
         <form onSubmit={print}>
-
           <label>Email :</label>
-
           <input
-            placeholder="Enter your email"
+            placeholder="Enter your username"
             required
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            name="username"
+            onChange={(handlechange)}
           />
 
           <br />
@@ -79,8 +87,9 @@ function Login() {
             placeholder="Enter your password"
             required
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+          name="password"
+            // onChange={(e) => setPassword(e.target.value)}
+            onChange={ (handlechange)}
           />
 
           <br />
