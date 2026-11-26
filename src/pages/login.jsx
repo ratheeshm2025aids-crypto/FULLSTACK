@@ -37,69 +37,53 @@ function login() {
 }
 
 export default Login */
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function Login() {
-  //const [count, setCount] = useState(0)
-  //const [email, setEmail] = useState("")
-  //const [password, setPassword] = useState("")
-
-  const[formdata,setFormdata]=useState({
+  //const[email, setEmail] = useState("")
+  //const[pass, setPass] = useState("")
+  const navigate = useNavigate();
+  const[formdata, setFormdata] = useState({
     username:"",
     password:""
   })
 
-  function print(e) { 
-    e.preventDefault()
-    //console.log("Email: ", email)
-    //console.log("Password: ", password)
-    console.log(formdata)
-  }
   function handlechange(e){
-   setFormdata( {...formdata,
-[e.target.name]: e.target.value})  
-}
- return (
+    e.preventDefault();
+    setFormdata({
+      ...formdata,
+      [e.target.name]:e.target.value
+    })
+  }
+
+  const handlesubmit = (event)=>{
+    event.preventDefault();
+    console.log("login page",formdata)
+    alert("Login sucessfull")
+    navigate("/dashboard",{
+      state:formdata
+    })
+  }
+    return ( 
     <>
-      <h1 className="text-3xl font-bold text-blue-500">
-        Hi!
-      </h1>
-
-      <br />
-
-      <div>
-        <form onSubmit={print}>
-          <label>Email :</label>
-          <input
-            placeholder="Enter your username"
-            required
-            type="text"
-            name="username"
-            onChange={(handlechange)}
-          />
-
-          <br />
-
-          <label>Password :</label>
-
-          <input
-            placeholder="Enter your password"
-            required
-            type="password"
-          name="password"
-            // onChange={(e) => setPassword(e.target.value)}
-            onChange={ (handlechange)}
-          />
-
-          <br />
-
-          <button type="submit">Submit</button>
-
-        </form>
-      </div>
+      <div>Login</div>
+      {/*}
+      <input type="email" required placeholder="Enter your email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+      <input type="password" required placeholder="Enter your password" value={pass} onChange={(e)=>{setPass(e.target.value)} }/>
+      <button type="submit" onClick={()=>console.log(email,pass)}>Submit</button>
+      <button type="submit" onClick={()=>print()}>Submit</button>
+      */}
+      
+      <form onSubmit={handlesubmit}>
+        <input type="text" required placeholder="Enter your username" name="username" value={formdata.username} onChange={handlechange}/>
+        <input type="password" required placeholder="Enter your password" name="password" onChange={handlechange }/>
+        <button type="submit" >Submit</button>
+      </form>
     </>
-  )
+    
+     );
 }
 
-export default Login
+export default Login;
