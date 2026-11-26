@@ -9,7 +9,7 @@ import { useState } from "react-router-dom"
             console.log(userdata)
         //}*/
         <div> Dashboard
-            <button onClick={displaydata}>Button</button>
+            <button onClick={displaydata}>Button.</button>
         </div>
     )
 export default Dashboard
