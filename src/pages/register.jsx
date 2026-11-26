@@ -10,7 +10,7 @@ function Register(){
     })
     function onSubmit1(data){
         console.log(data)
-        alert("register success")
+        alert("registered successfully")
         navigate("/")
     }
     return(
