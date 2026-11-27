@@ -28,12 +28,20 @@ function Login() {
   }
   return(
     <>
-    <div className="text-blue-500">Hi</div>
-    <form onSubmit={handleSubmit}>
-      <input type="text" required placeholder="Enter your name" name="username" onChange={handleChange}/>
-      <input type="password" required placeholder="Enter your password" name="password"  onChange={handleChange}/>
-      <button type="submit">Submit</button>   
+    <div className="min-h-screen flex justify-center items-center bg-gray-100 ">
+    <form onSubmit={handleSubmit} className="bg-white p-6 w-96 rounded-lg shadow-md ">
+       <h2 className="text-2xl font-bold text-center mb-5">
+                Login
+            </h2>
+            <label className="block text-sm font-medium mb-1"> UserName </label>
+      <input type="text" required placeholder="Enter your email" name="username" onChange={handleChange}
+      className="w-full p-2 mb-4  border rounded"/>
+      <label className="block text-sm font-medium mb-1"> Password</label>
+      <input type="password" required placeholder="Enter your password" name="password"  onChange={handleChange}
+      className="w-full p-2 mb-4 border rounded"/>
+      <button type="submit" className="w-full bg-green-400 border rounded hover:bg-green-600 p-2">Submit</button>   
     </form>
+    </div>
     </>
   );
 }
